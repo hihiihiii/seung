@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>페이지에 오신걸 환영합니다.</h1>
+	<input type="button" value="다음페이지로" onclick="location.href='/webapp/WEB-INF/views/home.jsp'"/>
 </body>
 </html>
