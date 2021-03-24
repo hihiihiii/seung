@@ -15,15 +15,20 @@ public class JDBCTests {
 			e.printStackTrace();
 		}
 	}
-		@Test
-		public void testConnection() {
-			try(Connection con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/데이터베이스 이름?serverTimezone=Asia/Seoul", "데이터베이스 사용자명", "사용자 비밀번호"
-					))
-			{ System.out.println(con); } 
-			catch (Exception e) { fail(e.getMessage()); }
 
+	@Test
+	public void testConnection() {
+		try (Connection con = DriverManager
+				.getConnection("jdbc:mysql://127.0.0.1:8880/seung?serverTimezone=Asia/Seoul", 
+						"seung1", 
+						"111")) {
 			
-		
+			System.out.println(con);
+			
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
+
 	}
+	
 }

@@ -22,7 +22,9 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="Kspring.Ksprings.Kspirngsh" />
-	
+<!-- 	<context:property-placeholder location="file:/etc/locale/*.properties" /> -->
+
+
 	
 	
 </beans:beans>
