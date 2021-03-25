@@ -4,13 +4,26 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-		
-		
-		
-		<context:component-scan base-package="ex.ex.ex1"></context:component-scan>
-		<context:property-placeholder location="/WEB-INF/*.properties"/>
-	<!-- Root Context: defines shared resources visible to all other web components -->
-		<!-- <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-				<property name="datasource" ref="datasource"></property>
-		</bean> -->
+
+
+	<!-- MySQL 데이터베이스 DataSource 설정코드 -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="jdbcUrl"
+			value="jdbc:mysql://127.0.0.1:8880/seung?serverTimezone=Asia/Seoul"></property>
+		<property name="username" value="seung1"></property>
+		<property name="password" value="111"></property>
+	</bean>
+
+	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
+		<constructor-arg ref="hikariConfig"></constructor-arg>
+	</bean>
+
+	<!-- Test를위한 -->
+	<context:component-scan base-package="ex.ex.ex1"></context:component-scan>
+	<context:property-placeholder
+		location="/WEB-INF/*.properties" />
+
 </beans>
