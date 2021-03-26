@@ -19,9 +19,9 @@ public class JDBCTests {
 	@Test
 	public void testConnection() {
 		try (Connection con = DriverManager
-				.getConnection("jdbc:mysql://127.0.0.1:8880/seung?serverTimezone=Asia/Seoul", 
-						"seung1", 
-						"111")) {
+				.getConnection("jdbc:mysql://218.155.92.246:8880/test?serverTimezone=Asia/Seoul", 
+						"seunghwann", 
+						"1234")) {
 			
 			System.out.println(con);
 			

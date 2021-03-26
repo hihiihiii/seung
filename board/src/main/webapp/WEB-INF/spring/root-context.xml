@@ -11,9 +11,9 @@
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="jdbcUrl"
-			value="jdbc:mysql://127.0.0.1:8880/seung?serverTimezone=Asia/Seoul"></property>
-		<property name="username" value="seung1"></property>
-		<property name="password" value="111"></property>
+			value="jdbc:mysql://218.155.92.246:8880/test?serverTimezone=Asia/Seoul"></property>
+		<property name="username" value="seunghwann"></property>
+		<property name="password" value="1234"></property>
 	</bean>
 
 	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource"
