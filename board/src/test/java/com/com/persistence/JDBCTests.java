@@ -19,7 +19,7 @@ public class JDBCTests {
 	@Test
 	public void testConnection() {
 		try (Connection con = DriverManager
-				.getConnection("jdbc:mysql://218.155.92.246:8880/test?serverTimezone=Asia/Seoul", 
+				.getConnection("jdbc:mysql://218.155.92.249:8880/test?serverTimezone=Asia/Seoul", 
 						"seunghwann", 
 						"1234")) {
 			
