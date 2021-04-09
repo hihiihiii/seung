@@ -51,7 +51,7 @@
 
 	<!-- welcome page -->
 	<welcome-file-list>
-		<welcome-file>/WEB-INF/views/index.jsp</welcome-file>
+		<welcome-file>/WEB-INF/views/home.jsp</welcome-file>
 	</welcome-file-list>
 
 	<!-- 에러페이지 -->

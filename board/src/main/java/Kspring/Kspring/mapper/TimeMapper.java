@@ -4,9 +4,18 @@ import org.apache.ibatis.annotations.Select;
 
 public interface TimeMapper {
 	
-	@Select("SELECT NOW();")
+	@Select("SELECT SYSDATE();")
 	public String getTime();
 	
-	@Select("select dayofweek('1998-02-03');")
-	public String getMyBirthDay();
+	public String getTime2();
+	
+//	@Select("select dayofweek('1998-02-03');")
+//	public String getMyBirthDay();
+
+//	@Select("SELECT SYSDATE();") 
+//	public String getTime2();
+	 
+	
+	
+	
 }

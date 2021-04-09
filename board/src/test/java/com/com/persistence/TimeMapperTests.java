@@ -20,9 +20,17 @@ public class TimeMapperTests {
 
 		System.out.println("지금 시간은 ? " + timeMapper.getTime());
 
+//		System.out.println("김승환의 생일 날짜는?"+timeMapper.getMyBirthDay());
 		
+//		//문제발생.
+//		System.out.println("현재시간은 ? "+timeMapper.getTime2());
 		
-		System.out.println("김승환의 생일 날짜는?"+timeMapper.getMyBirthDay());
+
 	}
+	@Test
+	public void testGetTime2() {
+		System.out.println(timeMapper.getTime2());
+	}
+	
 
 }

@@ -20,12 +20,6 @@
 		<property name="password" value="1234"></property>
 	</bean>
 	
-	 
-	
-
-
-	
-
 	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<constructor-arg ref="hikariConfig"></constructor-arg>
 	</bean>
