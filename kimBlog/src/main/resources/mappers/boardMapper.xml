@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="boardMapper">
+  	<insert id="insert">
+  		INSERT INTO sh_board(BNO
+  							,TITLE
+  							,CONTENT
+  							,WRITER)
+  							
+  							VALUES(SH_BOARD_SEQ.NEXTVAL
+  							,#{title}
+  							,#{content}
+  							,#{writer}
+  							)
+  		
+  	</insert>
+  	
+  	<!-- resultType은 여기에다 담겠다는 의미. -->
+  	<select id="list" resultType="kim.kim.vo.BoardVO">
+  			SELECT BNO
+	  			,TITLE
+	  			,WRITER
+	  			,REGDATE 
+  			FROM SH_BOARD ORDER BY BNO DESC
+  	</select>
+  </mapper>
