@@ -25,4 +25,28 @@
 	  			,REGDATE 
   			FROM SH_BOARD ORDER BY BNO DESC
   	</select>
+  	
+  	<select id="read" parameterType="int" resultType="kim.kim.vo.BoardVO">
+  			select bno
+  			, title
+  			, content
+  			, writer
+  			, regdate
+  			from sh_board
+  			where bno = #{bno}
+  	</select>
+  	
+  	<update id="update" parameterType="kim.kim.vo.BoardVO">
+  		UPDATE SH_BOARD
+  		SET TITLE = #{title},
+  			CONTENT = #{content}
+  		WHERE BNO = #{bno}
+  	</update>
+  	
+  	<delete id="delete" parameterType="int">
+  		DELETE
+  		FROM SH_BOARD
+  		WHERE BNO = #{bno}
+  	</delete>
+  	
   </mapper>
