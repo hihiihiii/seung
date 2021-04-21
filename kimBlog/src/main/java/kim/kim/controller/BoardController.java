@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kim.kim.service.BoardService;
 import kim.kim.vo.BoardVO;
+import kim.kim.vo.Criteria;
+import kim.kim.vo.PageMaker;
 
 @Controller
 public class BoardController {
@@ -45,10 +47,16 @@ public class BoardController {
 
 	// 게시판 목록 조회
 	@RequestMapping(value = "board/list", method = RequestMethod.GET)
-	public String list(Model model) throws Exception {
+	public String list(Model model,Criteria cri) throws Exception {
 		logger.info("list");
 
-		model.addAttribute("list", service.list());
+		model.addAttribute("list", service.list(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.listCount());
+		
+		model.addAttribute("pageMaker",pageMaker);
 
 		return "board/list";
 	}
@@ -78,7 +86,7 @@ public class BoardController {
 	public String update(BoardVO boardVO) throws Exception {
 		logger.info("update");
 
-		service.update(boardVO);
+		service.update(boardVO); 
 
 		return "redirect:/board/list";
 	}

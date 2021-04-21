@@ -49,4 +49,35 @@
   		WHERE BNO = #{bno}
   	</delete>
   	
+  	
+  	<!-- 게시판 페이징  -->
+  	<select id="listPage" resultType="kim.kim.vo.BoardVO" parameterType="kim.kim.vo.Criteria">
+  		SELECT bno,
+  		       title,
+  		       content,
+  		       writer,
+  		       regdate
+  		FROM(
+  			SELECT bno,
+  				   title,
+  				   content,
+  				   writer,
+  				   regdate,
+  				   ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
+  				   FROM SH_BOARD
+  				   			     ) SH
+  				   			     
+  		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+  		ORDER BY BNO DESC
+  	</select>
+  	
+  	<!-- 게시판 총갯수. -->
+  	<select id="listCount" resultType="int">
+  		<![CDATA[
+  			SELECT COUNT(BNO)
+  			FROM SH_BOARD
+  			WHERE BNO > 0
+  		]]>
+  	</select>
+  	
   </mapper>
