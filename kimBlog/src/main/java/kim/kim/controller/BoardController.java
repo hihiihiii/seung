@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -13,6 +14,7 @@ import kim.kim.service.BoardService;
 import kim.kim.vo.BoardVO;
 import kim.kim.vo.Criteria;
 import kim.kim.vo.PageMaker;
+import kim.kim.vo.SearchCriteria;
 
 @Controller
 public class BoardController {
@@ -47,14 +49,14 @@ public class BoardController {
 
 	// 게시판 목록 조회
 	@RequestMapping(value = "board/list", method = RequestMethod.GET)
-	public String list(Model model,Criteria cri) throws Exception {
+	public String list(Model model,@ModelAttribute("scri") SearchCriteria scri) throws Exception {
 		logger.info("list");
 
-		model.addAttribute("list", service.list(cri));
+		model.addAttribute("list", service.list(scri));
 		
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.listCount());
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(service.listCount(scri));
 		
 		model.addAttribute("pageMaker",pageMaker);
 

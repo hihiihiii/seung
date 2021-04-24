@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import kim.kim.vo.BoardVO;
 import kim.kim.vo.Criteria;
+import kim.kim.vo.SearchCriteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -26,17 +27,17 @@ public class BoardDAOImpl implements BoardDAO {
 
 	//게시판 목록 조회
 	@Override
-	public List<BoardVO> list(Criteria cri) throws Exception {
+	public List<BoardVO> list(SearchCriteria scri) throws Exception {
 		
 		//boardMapper.xml에서 mapper의 namespace가 boardMapper이고 그중에 id가 list인것을 가져와서 반환해라 
-		return sqlSession.selectList("boardMapper.listPage", cri);
+		return sqlSession.selectList("boardMapper.listPage", scri);
 	}
 	
 	//게시물 총 갯수
 	@Override
-	public int listCount() throws Exception {
+	public int listCount(SearchCriteria scri) throws Exception {
 		
-		return sqlSession.selectOne("boardMapper.listCount");
+		return sqlSession.selectOne("boardMapper.listCount",scri);
 	}
 
 	
