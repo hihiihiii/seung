@@ -3,7 +3,7 @@ package kim.kim.dao;
 import java.util.List;
 
 import kim.kim.vo.BoardVO;
-import kim.kim.vo.Criteria;
+
 import kim.kim.vo.SearchCriteria;
 
 public interface BoardDAO {

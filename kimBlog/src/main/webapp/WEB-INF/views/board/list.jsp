@@ -46,9 +46,14 @@
 						<c:forEach items="${list}" var="list">
 							<tr>
 								<td><c:out value="${list.bno}" /></td>
-	
-								<td><a href="/board/readView?bno=${list.bno}"><c:out
-											value="${list.title}" /></a></td>
+								<td>
+									<a href="/board/readView?bno=${list.bno}&
+																		page=${scri.page}&
+																		perPageNum=${scri.perPageNum}&
+																		searchType=${scri.searchType}&
+																		keyword=${scri.keyword}"><c:out value="${list.title}" />
+									</a>
+								</td>
 								<td><c:out value="${list.writer}" /></td>
 								<td><fmt:formatDate value="${list.regdate}"
 										pattern="yyyy-MM-dd" /></td>
@@ -65,13 +70,13 @@
 				      <option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
 				    </select>
 				
-				    <input type="text" name="keyWord" id="keywordInput" value="${scri.keyWord}"/>
+				    <input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
 				
 				    <button id="searchBtn" type="button">검색</button>
 				    <script>
 				      $(function(){
 				        $('#searchBtn').click(function() {
-				          self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyWord=" + encodeURIComponent($('#keywordInput').val());
+				          self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 				        });
 				      });   
 				    </script>

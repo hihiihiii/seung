@@ -2,7 +2,7 @@ package kim.kim.vo;
 
 public class SearchCriteria  extends Criteria{
 	private String searchType="";
-	private String keyWord="";
+	private String keyword="";
 	
 	
 	public String getSearchType() {
@@ -11,16 +11,16 @@ public class SearchCriteria  extends Criteria{
 	public void setSearchType(String searchType) {
 		this.searchType = searchType;
 	}
-	public String getKeyWord() {
-		return keyWord;
+	public String getKeyword() {
+		return keyword;
 	}
-	public void setKeyWord(String keyWord) {
-		this.keyWord = keyWord;
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 	
 	@Override
 	public String toString() {
-		return "SearchCriteria [searchType=" + searchType + ", keyWord=" + keyWord + "]";
+		return "SearchCriteria [searchType=" + searchType + ", keyword=" + keyword + "]";
 	}
 	
 	

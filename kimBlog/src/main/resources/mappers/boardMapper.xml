@@ -86,10 +86,10 @@
   	
   	<sql id="search">
   		<if test="searchType != null">
-  			<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyWord} || '%'</if>
-  			<if test="searchType == 'c'.toString()">AND CONTENT LIKE '%' || #{keyWord} || '%'</if>
-  			<if test="searchType == 'w'.toString()">AND WRITER LIKE '%' || #{keyWord} || '%'</if>
-  			<if test="searchType == 'tc'.toString()">AND (TITLE LIKE '%' || #{keyWord} || '%') OR (CONTENT LIKE '%' || #{keyWord} || '%')</if>
+  			<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>
+  			<if test="searchType == 'c'.toString()">AND CONTENT LIKE '%' || #{keyword} || '%'</if>
+  			<if test="searchType == 'w'.toString()">AND WRITER LIKE '%' || #{keyword} || '%'</if>
+  			<if test="searchType == 'tc'.toString()">AND (TITLE LIKE '%' || #{keyword} || '%') OR (CONTENT LIKE '%' || #{keyword} || '%')</if>
   		</if>
   	</sql>
 
