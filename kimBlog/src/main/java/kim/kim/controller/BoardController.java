@@ -178,7 +178,7 @@ public class BoardController {
 		return "redirect:/board/readView";
 	}
 	
-	//댓글 삭제 GET
+	//댓글 삭제 GET test를위한 추가 작성
 	@RequestMapping(value="board/replyDeleteView", method= RequestMethod.GET)
 	public String replyDeleteView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception{
 		logger.info("reply Write");
