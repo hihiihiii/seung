@@ -14,4 +14,44 @@
  	</select>
  	
  	
+ 	<!-- 댓글 작성 -->
+ 	<insert id="writeReply" >
+ 		INSERT INTO sh_reply(
+ 							   BNO
+ 							 , RNO
+ 							 , CONTENT
+ 							 , WRITER
+ 							 				)
+ 		        VALUES( #{bno}
+ 		        			, sh_reply_seq.nextval
+ 		        			, #{content}
+ 		        			, #{writer}
+ 		 )
+ 	</insert>
+ 	
+ 	<!-- 댓글 수정 -->
+ 	<update id="updateReply" parameterType="kim.kim.vo.ReplyVO">
+ 		UPDATE sh_reply SET CONTENT = #{content}
+ 		WHERE RNO= #{rno}
+ 	</update>
+ 	
+ 	<!-- 댓글 삭제 -->
+ 	<delete id="deleteReply" parameterType="kim.kim.vo.ReplyVO">
+ 		DELETE from sh_reply
+ 		WHERE RNO = #{rno}
+ 	</delete>
+ 	
+ 	<!-- 선택된 댓글 조회 -->
+ 	<select id="selectReply" resultType="kim.kim.vo.ReplyVO">
+ 		SELECT 
+ 					  BNO
+ 					, RNO
+ 					, CONTENT
+ 					, WRITER
+ 					, REGDATE
+ 		FROM SH_REPLY
+ 		WHERE RNO = #{rno}
+ 	</select>
+ 	
+ 	
  </mapper>

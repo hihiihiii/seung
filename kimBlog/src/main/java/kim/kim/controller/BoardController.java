@@ -124,5 +124,88 @@ public class BoardController {
 
 		return "redirect:/board/list";
 	}
+	
+	
+	/*
+	 * BoardController.java에서 댓글 작성을 위한 메서드를 만들어줍니다. 파라미터로 ReplyVO, SearchCriteria,
+	 * RedirectAttributes를 넣어주었는데요. ReplyVO는 댓글 작성하기위한 데이터, SearchCriteria는
+	 * readView에 있던 page, perPageNum, searchType, keyword값을 받아오기 위한것이고요.
+	 * RedirectAttributes는 redirect했을때 값들을 물고 이동합니다. 그래서 SearchCriteria의 값을 넣어서 댓글을
+	 * 저장 한 뒤 원래 페이지로 redirect하여 이동하게 됩니다.
+	 */
+	
+	//댓글작성 컨트롤러
+	@RequestMapping(value="board/replyWrite", method = RequestMethod.POST)
+	public String replyWrite(ReplyVO vo, SearchCriteria scri,RedirectAttributes rttr) throws Exception{
+		logger.info("reply Write");
+		
+		replyService.writeReply(vo);
+		
+		rttr.addAttribute("bno",vo.getBno());
+		rttr.addAttribute("page",scri.getPage());
+		rttr.addAttribute("perPageNum",scri.getPerPageNum());
+		rttr.addAttribute("searchType",scri.getSearchType());
+		rttr.addAttribute("keyword",scri.getKeyword());
+		
+		return "redirect:/board/readView";
+	}
+	
+	//댓글 수정 GET
+	@RequestMapping(value="board/replyUpdateView", method= RequestMethod.GET)
+	public String replyUpdateView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception{
+		logger.info("reply Write");
+		
+		model.addAttribute("replyUpdate", replyService.selectReply(vo.getRno()));
+		model.addAttribute("scri",scri);
+
+		return "board/replyUpdateView";
+		
+	}
+	
+	//댓글 수정 POST
+	@RequestMapping(value="board/replyUpdate", method= RequestMethod.POST)
+	public String replyUpadate(ReplyVO vo, SearchCriteria scri, RedirectAttributes rttr) throws Exception{
+		logger.info("reply Write");
+		
+		replyService.updateReply(vo);
+		
+		rttr.addAttribute("bno", vo.getBno());
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+	
+		return "redirect:/board/readView";
+	}
+	
+	//댓글 삭제 GET
+	@RequestMapping(value="board/replyDeleteView", method= RequestMethod.GET)
+	public String replyDeleteView(ReplyVO vo, SearchCriteria scri, Model model) throws Exception{
+		logger.info("reply Write");
+		
+		model.addAttribute("replyDelete", replyService.selectReply(vo.getRno()));
+		model.addAttribute("scri", scri);
+		return "board/replyDeleteView";
+	}
+	
+	//댓글 삭제 POST
+	@RequestMapping(value="board/replyDelete", method= RequestMethod.POST)
+	public String replyDelete(ReplyVO vo, SearchCriteria scri,RedirectAttributes rttr) throws Exception{
+		logger.info("reply Write");
+		
+		//주의
+		replyService.deleteReply(vo);
+		
+		rttr.addAttribute("bno", vo.getBno());
+		rttr.addAttribute("page",scri.getPage());
+		rttr.addAttribute("perPageNum",scri.getPerPageNum());
+		rttr.addAttribute("searchType",scri.getSearchType());
+		rttr.addAttribute("keyword",scri.getKeyword());
+		
+		return "redirect:/board/readView";
+	}
+	
+	
+	
 
 }
