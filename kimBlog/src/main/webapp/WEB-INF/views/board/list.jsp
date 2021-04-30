@@ -8,6 +8,10 @@
 <meta charset="UTF-8">
 <title>게시판</title>
 
+<script src="<c:url value="/resources/js/bootstrap.js" />"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
+
+
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
@@ -23,16 +27,9 @@
 	<body>
 		<div id="root">
 			<header>
-				<h1>게시판</h1>
-			</header>
-			<hr />
-	
-			<div>
 				<%@include file="nav.jsp"%>
-			</div>
-	
-			<hr />
-	
+			</header>
+
 			<section id="container">
 				<form role="form" method="get" >
 					<table>
