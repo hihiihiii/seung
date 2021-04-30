@@ -188,7 +188,7 @@ public class BoardController {
 		return "board/replyDeleteView";
 	}
 	
-	//댓글 삭제 POST
+	//댓글 삭제 POST 입니다.
 	@RequestMapping(value="board/replyDelete", method= RequestMethod.POST)
 	public String replyDelete(ReplyVO vo, SearchCriteria scri,RedirectAttributes rttr) throws Exception{
 		logger.info("reply Write");
