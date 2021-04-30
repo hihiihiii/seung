@@ -5,6 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import kim.kim.dao.BoardDAO;
 import kim.kim.vo.BoardVO;
@@ -40,13 +42,15 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 
+	//게시글 조회
+	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public BoardVO read(int bno) throws Exception {
-		
+			dao.boardHit(bno);
 		return dao.read(bno);
 	}
 
-
+	//게시글 수정
 	@Override
 	public void update(BoardVO boardVO) throws Exception {
 	
@@ -54,12 +58,14 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 
-
+	//게시글 삭제
 	@Override
 	public void delete(int bno) throws Exception {
 		dao.delete(bno);
 		
 	}
+
+	
 
 
 }

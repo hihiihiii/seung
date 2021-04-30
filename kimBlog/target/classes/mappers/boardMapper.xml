@@ -56,13 +56,15 @@
   		       title,
   		       content,
   		       writer,
-  		       regdate
+  		       regdate,
+  		       hit
   		FROM(
   			SELECT bno,
   				   title,
   				   content,
   				   writer,
   				   regdate,
+  				   hit,
   				   ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
   				   FROM SH_BOARD
   				   WHERE 1=1
@@ -93,5 +95,12 @@
   		</if>
   	</sql>
 
+	
+	<!-- 게시판 조회수 -->
+	<update id="boardHit" parameterType="int">
+		UPDATE SH_BOARD SET
+		HIT = HIT+1
+		WHERE BNO = #{bno}
+	</update>
   	
   </mapper>

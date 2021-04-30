@@ -62,6 +62,13 @@ public class BoardDAOImpl implements BoardDAO {
 		
 	}
 
+	//조회수
+	@Override
+	public void boardHit(int bno) throws Exception {
+		sqlSession.update("boardMapper.boardHit",bno);
+		
+	}
+
 	
 	
 
