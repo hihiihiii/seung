@@ -8,16 +8,24 @@
 	<title>Home</title>
 	
 </head>
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
 <script src="<c:url value="/resources/js/bootstrap.js" />"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+
 
 <a href="/board/list">게시판</a><br />
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#logoutBtn").on("click", function(){
 			location.href="member/logout";
+		})
+		
+		$("#registerBtn").on("click",function(){
+			location.href="member/register";
+		})
+		
+		$("#memberUpdateBtn").on("click",function(){
+			location.href="member/memberUpdateView";
 		})
 		
 	})
@@ -35,12 +43,13 @@
 			</div>
 			<div>
 				<button type="submit">로그인</button>
-				<button type="button">회원가입</button>
+				<button id="registerBtn"  type="button">회원가입</button>
 			</div>
 		</c:if>
 		<c:if test="${member != null }">
 			<div>
-				<p>${member.userId}님 환영 합니다.</p>
+				<p>${member.userName}님 환영 합니다.</p>
+				<button id="memberUpdateBtn" type="button">회원정보수정</button>
 				<button id="logoutBtn" type="button">로그아웃</button>
 			</div>
 		</c:if>

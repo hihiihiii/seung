@@ -11,15 +11,37 @@
   												,USERNAME)
   								VALUES( #{userId}
   											, #{userPass}
-  											, #{userName})
+  											, #{userName} )
   	</insert>
   	
   	<!-- 로그인 -->
   	<select id="login" resultType="kim.kim.vo.MemberVO">
-  		SELECT USERID, USERPASS
+  		SELECT USERID, USERPASS, USERNAME
   			FROM SH_MEMBER
   		WHERE USERID =#{userId}
-  		AND =#{userPass}
+  		AND USERPASS =#{userPass}
+  	</select>
+  	
+  	<!-- 회원 수정 -->
+  	<update id="memberUpdate">
+  		UPDATE SH_MEMBER SET
+  		USERPASS =#{userPass},
+  		USERNAME=#{userName}
+  		WHERE USERID =#{userId}
+  	</update>
+  	
+  	<!-- 회원 탈퇴 -->
+  	<delete id="memberDelete">
+  		DELETE FROM SH_MEMBER
+  		WHERE USERID = #{userId}
+  		    AND USERPASS = #{userPass}
+  	</delete>
+  	
+  	<!-- 패스워드 체크 -->
+  	<select id="passChk" resultType="int">
+  	SELETE COUNT(*) FROM SH_MEMBER
+  	WHERE USERID = #{userId}
+  		AND UESRPASS =#{userPass}
   	</select>
   
   </mapper>
