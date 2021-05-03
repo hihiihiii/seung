@@ -18,12 +18,20 @@
 			location.href= "/login";
 		})
 		
+		//vaildator
 		$("#submit").on("click",function(){
+			var idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
 			if($("#userId").val()==""){
 				alert("아이디를 입력하세요.");
-			$("#userid").focus();
-			return false;
+				$("#userId").focus();
+				return false;
 		}
+			if(!idReg.test( $("input[name=userId]").val())){
+				alert("6~20자의 영문과 숫자로만 입력하세요.");
+				$("#userId").focus();
+				return false;
+			}
+			
 			if($("#userPass").val()==""){
 				alert("비밀번호를 입력하세요.");
 			$("#userPass").focus();
@@ -36,6 +44,7 @@
 		}
 			
 		});
+		
 	})
 </script>
 <body>
