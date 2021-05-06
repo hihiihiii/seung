@@ -19,13 +19,13 @@
   		SELECT USERID, USERPASS, USERNAME
   			FROM SH_MEMBER
   		WHERE USERID =#{userId}
-  		AND USERPASS =#{userPass}
+  		<!-- AND USERPASS =#{userPass} -->
   	</select>
   	
   	<!-- 회원 수정 -->
   	<update id="memberUpdate">
   		UPDATE SH_MEMBER SET
-  		USERPASS =#{userPass},
+  		<!-- USERPASS =#{userPass}, -->
   		USERNAME=#{userName}
   		WHERE USERID =#{userId}
   	</update>
@@ -34,7 +34,7 @@
   	<delete id="memberDelete">
   		DELETE FROM SH_MEMBER
   		WHERE USERID = #{userId}
-  		    AND USERPASS = #{userPass}
+  		    <!-- AND USERPASS = #{userPass} -->
   	</delete>
   	
   	<!-- 패스워드 체크 -->
@@ -42,6 +42,12 @@
   	SELECT COUNT(*) FROM SH_MEMBER
   	WHERE USERID = #{userId}
   		AND USERPASS =#{userPass}
+  	</select>
+  	
+  	<!-- 아이디 중복체크 -->
+  	<select id="idChk" resultType="int">
+  		SELECT COUNT(*) FROM SH_MEMBER
+  		WHERE USERID = #{userId}
   	</select>
   
   </mapper>

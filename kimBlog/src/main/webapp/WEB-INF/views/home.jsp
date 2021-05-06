@@ -50,6 +50,7 @@
 			<div>
 				<p>${member.userName}님 환영 합니다.</p>
 				<button id="memberUpdateBtn" type="button">회원정보수정</button>
+				<!-- <button id="memberDeleteBtn" type="button">회원탈퇴</button> -->
 				<button id="logoutBtn" type="button">로그아웃</button>
 			</div>
 		</c:if>

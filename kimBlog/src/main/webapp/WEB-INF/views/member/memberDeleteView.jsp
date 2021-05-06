@@ -25,18 +25,18 @@
 					$("#userPass").focus();
 					return false;
 				}
-			$.ajax({
-				url : "/member/passChk",
-				type : "POST",
-				dataType : "json",
-				data : $("delForm").serializeArray(),
-				success : function(data){
-					if(data == 0){
-						alert("패스워드가 틀렸습니다.");
-						return;
-					}else{
-						if(confirm("회원탈퇴하시겠습니까?")){
-							$("delForm").submit();
+				$.ajax({
+					url : "/member/passChk",
+					type : "POST",
+					dataType : "json",
+					data : $("delForm").serializeArray(),
+					success : function(data){
+						if(data == true){
+							if(confirm("회원탈퇴하시겠습니까?")){
+								$("delForm").submit();
+						}else{
+								alert("패스워드가 틀렸습니다.");
+								return;
 						}
 					}
 				}
@@ -53,7 +53,7 @@
 					<input class="form-control" type="text" id="userId" name="userId" value="${member.userId}" readonly="readonly"/>
 				</div>
 				<div class="form-group has-feedback">
-					<label class="control-label" for="userPass">패스워드</label>
+					<label class="control-label" for="userPass">비밀번호</label>
 					<input class="form-control" type="password" id="userPass" name="userPass" />
 				</div>
 				<div class="form-group has-feedback">

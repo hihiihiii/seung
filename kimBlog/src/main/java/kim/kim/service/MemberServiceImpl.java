@@ -48,4 +48,11 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
+	//아이디중복체크
+	@Override
+	public int idChk(MemberVO vo) throws Exception {
+		int result = dao.idChk(vo);
+		return result;
+	}
+
 }
