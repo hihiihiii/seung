@@ -39,9 +39,9 @@
   	
   	<!-- 패스워드 체크 -->
   	<select id="passChk" resultType="int">
-  	SELETE COUNT(*) FROM SH_MEMBER
+  	SELECT COUNT(*) FROM SH_MEMBER
   	WHERE USERID = #{userId}
-  		AND UESRPASS =#{userPass}
+  		AND USERPASS =#{userPass}
   	</select>
   
   </mapper>

@@ -43,8 +43,8 @@ public class MemberDAOImpl implements MemberDAO{
 	//패스워드 체크
 	@Override
 	public int passChk(MemberVO vo) throws Exception {
-		
-		return 0;
+		int result = sql.selectOne("memberMapper.passChk",vo);
+		return result;
 	}
 	
 
